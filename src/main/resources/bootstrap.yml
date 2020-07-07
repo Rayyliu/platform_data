@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: platform-data  #指定服务名，注册到eureka后，能够显示这里标注的服务名,名字中间必须是横线，不能是下划线
+  cloud:
+    nacos:
+      config:
+#        server-addr: 192.168.88.132:8848
+#        namespace: c7220843-667f-4def-923b-58f9b9fab203
+        server-addr:  172.31.1.27:8848
+        namespace: 25c137a9-a801-4033-9b3d-eac6d793c341
+        file-extension: yml
+      discovery:
+#        server-addr: 192.168.88.132:8848
+        server-addr:  172.31.1.27:8848
+        namespace: 25c137a9-a801-4033-9b3d-eac6d793c341
+
+##数据库连接信息配置
+#ds:
+#  supplychain:
+#    username: root
+#    password: vj_LGDlh0vEaXZKNldFmy4lJnML_C8VW
+#    url: jdbc:mysql://10.244.76.19:3306/supplychain?useUnicode=true&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull&useSSL=true
+#    driverClassName: com.mysql.jdbc.Driver
+#    tables: sc_loan,sc_borrower,sc_additional_info,sc_affiliated_enterprise,sc_band_kind,sc_bank_info,sc_brand_info,sc_core_enterprise,sc_credit_apply,sc_credit_audit,sc_credit_record,sc_enterprise_bank_info,sc_loan_audit,sc_loan_file,sc_order,sc_payment,sc_payment_detail,sc_supplier,sc_supplier_product,sc_white_list
+#
+##端口配置
+#server:
+#  port: 8089
+#  servlet:
+#    context-path: /
+
+#eureka相关配置
+#eureka:
+#  client:
+#    service-url:
+#     defaultZone: http://192.168.88.132:7001/eureka/
+#      defaultZone: http://127.0.0.1:6868/eureka/
+#  instance:
+#    prefer-ip-address: true      #加上此配置后，其他模块才能访问改模块;将自己的IP注册到eureka
+#    instance-id: http://192.168.88.132:7002    #显示到eureka注册中心的服务的注册IP地址,即注册的实例名称
+#    status-page-url: http://192.168.88.132:7002/swagger-ui.html#/ #配置注册中心注册服务的跳转地址
+#    status-page-url: http://localhost:8089/
+
+
+
+
+
+
+
