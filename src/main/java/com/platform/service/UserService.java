@@ -9,4 +9,6 @@ public interface UserService {
 //    void save(UserEntity user);
     void save(User user);
 
+    UserEntity findByEmail(String email);
+
 }

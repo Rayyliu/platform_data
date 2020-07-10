@@ -1,11 +1,15 @@
 package com.platform.entity;
 
-public class ResponseResult {
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class ResponseResult<T> {
 
     private Integer code;
     private boolean flag;
     private String message;
-    private Object data;
+    private T data;
 
     public ResponseResult() {
     }
@@ -16,11 +20,25 @@ public class ResponseResult {
         this.message = message;
     }
 
-    public ResponseResult(Integer code, boolean flag, String message, Object data) {
+    public ResponseResult(Integer code, boolean flag, String message, T data) {
         this.code = code;
         this.flag = flag;
         this.message = message;
         this.data = data;
+    }
+
+    public ResponseResult(int code, String message, T data) {
+        this.code = code;
+        this.message = message;
+        this.data = data;
+    }
+
+    public   ResponseResult<T> success(Integer code,boolean flag,String message,T data){
+        return new ResponseResult(code,true,message,data);
+    }
+
+    public  ResponseResult<T> fail(Integer code,String message,T data){
+        return new ResponseResult(code,message,data);
     }
 
     public void setCode(Integer code) {
@@ -35,7 +53,7 @@ public class ResponseResult {
         this.message = message;
     }
 
-    public void setData(Object data) {
+    public void setData(T data) {
         this.data = data;
     }
 
@@ -51,7 +69,7 @@ public class ResponseResult {
         return message;
     }
 
-    public Object getData() {
+    public T getData() {
         return data;
     }
 

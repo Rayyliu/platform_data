@@ -2,6 +2,7 @@ package com.platform.serviceimpl;
 
 import com.platform.dal.mapper.platform.UserMapper;
 import com.platform.dal.model.platform.User;
+import com.platform.dal.model.platform.UserExample;
 import com.platform.entity.UserEntity;
 import com.platform.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,5 +17,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void save(User user) {
         userMapper.insert(user);
+    }
+
+    @Override
+    public UserEntity findByEmail(String email) {
+        return userMapper.selectUserByEmail(email);
     }
 }

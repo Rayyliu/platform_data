@@ -3,6 +3,8 @@ package com.platform.dal.mapper.platform;
 import com.platform.dal.model.platform.User;
 import com.platform.dal.model.platform.UserExample;
 import java.util.List;
+
+import com.platform.entity.UserEntity;
 import org.apache.ibatis.annotations.Param;
 
 public interface UserMapper {
@@ -93,4 +95,9 @@ public interface UserMapper {
      * @mbg.generated Tue Jul 07 15:42:37 CST 2020
      */
     int updateByPrimaryKey(User record);
+
+    /**
+     * 通过email查询用户信息
+     */
+    UserEntity selectUserByEmail(String email);
 }
