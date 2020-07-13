@@ -85,9 +85,10 @@ public class TestBaseCodeGenerator extends MybatisConfig {
 //                    replace("target/classes","src/main/java").replace("ScTestBase.class",className+".java");
         String testBaseDir = "src/main/java/com/platform/testbase/";
         File file = new File(testBaseDir);
-        if(!file.exists()){
-            file.mkdir();
+        if(file.exists()){
+            file.delete();
         }
+        file.mkdir();
         String outFile = testBaseDir+className+".java";
         Map<String,Object> root = new HashMap();
         root.put("packageName",packageName);
