@@ -2,14 +2,15 @@ package com.platform.controller;
 
 import com.platform.dal.mapper.platform.ProjectMapper;
 import com.platform.dal.model.platform.Project;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("project/")
@@ -28,8 +29,14 @@ public class ProjectController {
             projectMapper.insert(project);
             return true;
         }catch (Exception e){
-            log.error("插入project表失败");
+            log.error("插入project表失败",e);
             return false;
         }
+    }
+
+    @GetMapping("query")
+    @ApiOperation("项目列表查询")
+    public List<Project> query(int page, int pageSize){
+        return projectMapper.query(page,pageSize);
     }
 }
