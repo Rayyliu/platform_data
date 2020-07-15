@@ -44,8 +44,15 @@ public class ${className} extends DruidBaseConfig {
     @Bean(name = "${dbName}SqlSessionFactory")
     public SqlSessionFactory ${dbName}SqlSessionFactory(@Qualifier("${dbName}DataSource") DataSource ${dbName}DataSource)
             throws Exception {
+
+        //自动使用驼峰命名属性映射字段,userId -> user_id
+        org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
+        configuration.setMapUnderscoreToCamelCase(true);
+
         final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
         sessionFactory.setDataSource(${dbName}DataSource);
+        sessionFactory.setConfiguration(configuration);
+
         Resource[] resources = new PathMatchingResourcePatternResolver().getResources("classpath*:mybatis/**/*.xml");
         sessionFactory.setMapperLocations(resources);
         return sessionFactory.getObject();

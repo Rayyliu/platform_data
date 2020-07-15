@@ -44,14 +44,15 @@ public class PlatformDataSourceConfig extends DruidBaseConfig {
     @Bean(name = "platformSqlSessionFactory")
     public SqlSessionFactory platformSqlSessionFactory(@Qualifier("platformDataSource") DataSource platformDataSource)
             throws Exception {
-        final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
 
         //自动使用驼峰命名属性映射字段,userId -> user_id
         org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
         configuration.setMapUnderscoreToCamelCase(true);
 
+        final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
         sessionFactory.setDataSource(platformDataSource);
         sessionFactory.setConfiguration(configuration);
+
         Resource[] resources = new PathMatchingResourcePatternResolver().getResources("classpath*:mybatis/**/*.xml");
         sessionFactory.setMapperLocations(resources);
         return sessionFactory.getObject();

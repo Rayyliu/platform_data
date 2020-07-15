@@ -39,4 +39,23 @@ public class ProjectController {
     public List<Project> query(int page, int pageSize){
         return projectMapper.query(page,pageSize);
     }
+
+    @GetMapping("queryTotal")
+    @ApiOperation("查询项目总数")
+    public int queryProjectTotal(){
+        return projectMapper.queryProjectTotal();
+    }
+
+    @PostMapping("updateProject")
+    @ApiOperation("根据projectId修改project表数据")
+    public int updateProject(@RequestBody Project project){
+        return projectMapper.updateByPrimaryKey(project);
+    }
+
+    @GetMapping("queryById")
+    @ApiOperation("通过id查询项目详情")
+    public Project query(int projectId){
+        return projectMapper.selectByPrimaryKey(projectId);
+    }
 }
+
