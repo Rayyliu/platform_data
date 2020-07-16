@@ -341,4 +341,9 @@
     select count(*) as total from project;
   </select>
 
+  <update id="updateValid">
+    update project set valid = #{valid} where id = #{projectId}
+  </update>
+
+
 </mapper>

@@ -107,4 +107,9 @@ public interface ProjectMapper {
      * @return
      */
     List<Project>  query(@Param("page") int page,@Param("pageSize") int pageSize);
+
+    /***
+     * 修改valid值
+     */
+    void updateValid(@Param("projectId")int projectId,@Param("valid") boolean valid);
 }

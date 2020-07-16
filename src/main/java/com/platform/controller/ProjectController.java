@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigInteger;
 import java.util.List;
 
 @RestController
@@ -56,6 +57,18 @@ public class ProjectController {
     @ApiOperation("通过id查询项目详情")
     public Project query(int projectId){
         return projectMapper.selectByPrimaryKey(projectId);
+    }
+
+    @GetMapping("delById")
+    @ApiOperation("单挑删除项目")
+    public void del(String projectId){
+        projectMapper.deleteByPrimaryKey(new Integer(projectId));
+    }
+
+    @GetMapping("updateValid")
+    @ApiOperation("修改project表valid值")
+    public void updateValid(int projectId,boolean valid){
+        projectMapper.updateValid(projectId,valid);
     }
 }
 
