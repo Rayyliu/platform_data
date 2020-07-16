@@ -112,4 +112,9 @@ public interface ProjectMapper {
      * 修改valid值
      */
     void updateValid(@Param("projectId")int projectId,@Param("valid") boolean valid);
+
+    /***
+     * 批量删除project表数据
+     */
+    void deletes(String[] projectIds);
 }

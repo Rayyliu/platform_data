@@ -70,5 +70,11 @@ public class ProjectController {
     public void updateValid(int projectId,boolean valid){
         projectMapper.updateValid(projectId,valid);
     }
+
+    @GetMapping("deletes")
+    @ApiOperation("通过projectId批量删除project表数据")
+    public void deletes(String[] projectIds){
+        projectMapper.deletes(projectIds);
+    }
 }
 

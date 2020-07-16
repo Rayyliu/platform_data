@@ -345,5 +345,11 @@
     update project set valid = #{valid} where id = #{projectId}
   </update>
 
+  <delete id="deletes">
+    delete from project where id in <foreach collection="array" item="projectIds" index="index" open="(" close=")" separator=",">
+    #{projectIds}
+  </foreach>
+  </delete>
+
 
 </mapper>

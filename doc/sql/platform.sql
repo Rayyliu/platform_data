@@ -17,6 +17,6 @@ CREATE TABLE `project` (
   `tester` varchar(255) NOT NULL COMMENT '项目测试负责人',
   `is_valid` tinyint(1) NOT NULL DEFAULT '0' COMMENT '项目是由启用',
   `update_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `creat_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
