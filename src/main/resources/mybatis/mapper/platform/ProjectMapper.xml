@@ -345,11 +345,15 @@
     update project set valid = #{valid} where id = #{projectId}
   </update>
 
-  <delete id="deletes">
-    delete from project where id in <foreach collection="array" item="projectIds" index="index" open="(" close=")" separator=",">
-    #{projectIds}
+  <delete id="deletes" parameterType="java.lang.String">
+    delete from project where id in <foreach collection="array" item="item" index="index" open="(" close=")" separator=",">
+    #{item}
   </foreach>
   </delete>
+
+  <select id="queryProject" resultType="java.lang.String">
+    select distinct project_name from project where valid = 1;
+  </select>
 
 
 </mapper>

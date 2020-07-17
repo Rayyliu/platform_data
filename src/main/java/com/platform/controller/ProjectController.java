@@ -2,6 +2,7 @@ package com.platform.controller;
 
 import com.platform.dal.mapper.platform.ProjectMapper;
 import com.platform.dal.model.platform.Project;
+import com.platform.entity.dto.ProjectDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.ibatis.annotations.Param;
@@ -75,6 +76,13 @@ public class ProjectController {
     @ApiOperation("通过projectId批量删除project表数据")
     public void deletes(String[] projectIds){
         projectMapper.deletes(projectIds);
+    }
+
+    @GetMapping("queryProject")
+    @ApiOperation("查询所有项目详情")
+    public String[] queryProject(){
+        List<String> ls =projectMapper.queryProject();
+        return ls.toArray(new String[ls.size()]);
     }
 }
 

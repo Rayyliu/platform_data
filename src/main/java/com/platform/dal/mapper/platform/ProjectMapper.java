@@ -3,6 +3,8 @@ package com.platform.dal.mapper.platform;
 import com.platform.dal.model.platform.Project;
 import com.platform.dal.model.platform.ProjectExample;
 import java.util.List;
+
+import com.platform.entity.dto.ProjectDTO;
 import org.apache.ibatis.annotations.Param;
 
 public interface ProjectMapper {
@@ -116,5 +118,10 @@ public interface ProjectMapper {
     /***
      * 批量删除project表数据
      */
-    void deletes(String[] projectIds);
+    void deletes(@Param("array") String[] array);
+
+    /***
+     * 查询不重复的项目列表
+     */
+    List<String> queryProject();
 }
