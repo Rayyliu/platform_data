@@ -20,3 +20,21 @@ CREATE TABLE `project` (
   `creat_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `interface` (
+  `id` int(20) NOT NULL AUTO_INCREMENT COMMENT '接口id',
+  `interface_name` varchar(255) NOT NULL COMMENT '接口名称',
+  `project` varchar(255) NOT NULL COMMENT '接口所属项目',
+  `path` varchar(255) NOT NULL COMMENT '接口请求路径',
+  `method` varchar(255) NOT NULL COMMENT '接口请求类型',
+  `mode` varchar(255) NOT NULL COMMENT '数据传输方式，data、json',
+  `headerDetail` json DEFAULT NULL COMMENT '请求头详细信息',
+  `body` json DEFAULT NULL COMMENT '请求体详细信息',
+  `sign` tinyint(1) NOT NULL DEFAULT '0' COMMENT '接口是否需要动态生成sign。0：否定；1：肯定',
+  `header` tinyint(1) NOT NULL DEFAULT '0' COMMENT '接口是否需要在header里添加动态生成的sign。0：否定；1：肯定',
+  `mock` tinyint(1) NOT NULL DEFAULT '0' COMMENT '接口是否需要mock辅助。0：否定；1：肯定',
+  `description` varchar(255) NOT NULL COMMENT '接口描述',
+  `creat_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后一次更新时间',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
