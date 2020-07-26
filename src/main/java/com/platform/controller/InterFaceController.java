@@ -8,12 +8,10 @@ import com.platform.dal.model.platform.Interface;
 import io.swagger.annotations.ApiOperation;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -35,18 +33,31 @@ public class InterFaceController {
         Interface interfaceDTO;
         //map转为实体类
         interfaceDTO = JSON.parseObject(JSON.toJSONString(interfaceData),Interface.class);
-        for (Map.Entry<String, Object> entry:interfaceData.entrySet()){
-            String key = entry.getKey();
-            Object value = entry.getValue();
-            if("headerdetail".equals(key)){
-                interfaceDTO.setHeaderdetail(objectMapper.writeValueAsString(value));
-            }
-            if("body".equals(key)){
-                interfaceDTO.setBody(objectMapper.writeValueAsString(value));
-            }
+//        for (Map.Entry<String, Object> entry:interfaceData.entrySet()){
+//            String key = entry.getKey();
+//            Object value = entry.getValue();
+//            if("headerdetail".equals(key)){
+//                interfaceDTO.setHeaderdetail(objectMapper.writeValueAsString(value));
+//            }
+//            if("body".equals(key)){
+//                interfaceDTO.setBody(objectMapper.writeValueAsString(value));
+//            }
 
-        }
+//        }
         System.out.println(interfaceDTO);
         interfaceMapper.insertSelective(interfaceDTO);
     }
+
+    @GetMapping("queryAll")
+    @ApiOperation("查询所有接口")
+    public int queryAll(){
+        return interfaceMapper.queryInterFaceTotal();
     }
+
+    @GetMapping("queryPage")
+    public List<Interface> queryPage(@RequestParam("pageNum") int pageNum,
+                               @RequestParam("pageSize")int pageSize,
+                               @RequestParam(value = "interfaceName",required = false)String interfaceName){
+        return interfaceMapper.queryPage(pageNum,pageSize,interfaceName);
+    }
+}

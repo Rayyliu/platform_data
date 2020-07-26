@@ -117,4 +117,15 @@ public interface InterfaceMapper {
      * @mbg.generated Tue Jul 21 22:09:34 CST 2020
      */
     int updateByPrimaryKey(Interface record);
+
+
+    /***
+     * 查询所有接口
+     */
+    int queryInterFaceTotal();
+
+    /***
+     * 查询接口列表
+     */
+    List<Interface> queryPage(int pageNum,int pageSize,String interfaceName);
 }

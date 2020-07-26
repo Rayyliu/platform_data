@@ -506,4 +506,18 @@
       update_at = #{updateAt,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+
+  <select id="queryInterFaceTotal" resultType="java.lang.Integer">
+    select count(*) as total from interface;
+  </select>
+
+
+  <select id="queryPage" resultType="com.platform.dal.model.platform.Interface">
+    select * from interface
+    <where>
+      <if test ="interfaceName!=null and interfaceName!=''">
+        and interface_name = #{interfaceName}</if>
+    </where> limit ${(pageNum-1)*pageSize},${pageSize};
+  </select>
 </mapper>
