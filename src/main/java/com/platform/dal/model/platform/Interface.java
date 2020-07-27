@@ -1,6 +1,9 @@
 package com.platform.dal.model.platform;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -114,7 +117,10 @@ public class Interface implements Serializable {
      *
      * @mbg.generated Tue Jul 21 22:09:34 CST 2020
      */
-    @JsonIgnore
+//    @DateTimeFormat(pattern="yyyy-MM-dd")
+//    @JSONField(format="yyyy-MM-dd")//数据库导出页面时json格式化
+//    @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd HH:mm:ss")
     private Date updateAt;
 
     /**

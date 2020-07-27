@@ -27,7 +27,7 @@ public class InterFaceController {
     @SneakyThrows
     @PostMapping("add")
     @ApiOperation("添加新接口")
-    public void addInterFace(@RequestBody Map<String,Object>  interfaceData){
+    public int addInterFace(@RequestBody Map<String,Object>  interfaceData){
 
 
         Interface interfaceDTO;
@@ -45,7 +45,7 @@ public class InterFaceController {
 
 //        }
         System.out.println(interfaceDTO);
-        interfaceMapper.insertSelective(interfaceDTO);
+       return interfaceMapper.insertSelective(interfaceDTO);
     }
 
     @GetMapping("queryAll")
