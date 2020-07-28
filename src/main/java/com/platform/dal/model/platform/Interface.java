@@ -16,7 +16,7 @@ public class Interface implements Serializable {
      *
      * @mbg.generated Tue Jul 21 22:09:34 CST 2020
      */
-    @JsonIgnore
+//    @JsonIgnore
     private Integer id;
 
     /**

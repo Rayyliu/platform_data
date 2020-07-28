@@ -60,4 +60,13 @@ public class InterFaceController {
                                @RequestParam(value = "interfaceName",required = false)String interfaceName){
         return interfaceMapper.queryPage(pageNum,pageSize,interfaceName);
     }
+
+    @PostMapping("edit")
+    @ApiOperation("修改interface表")
+    public int edit(@RequestBody Map<String,Object>  interfaceData){
+        Interface interfaceDTO;
+        //map转为实体类
+        interfaceDTO = JSON.parseObject(JSON.toJSONString(interfaceData),Interface.class);
+        return interfaceMapper.updateByPrimaryKeySelective(interfaceDTO);
+    }
 }
