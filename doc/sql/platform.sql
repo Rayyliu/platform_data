@@ -34,7 +34,8 @@ CREATE TABLE `interface` (
   `header` tinyint(1) NOT NULL DEFAULT '0' COMMENT '接口是否需要在header里添加动态生成的sign。0：否定；1：肯定',
   `mock` tinyint(1) NOT NULL DEFAULT '0' COMMENT '接口是否需要mock辅助。0：否定；1：肯定',
   `description` varchar(255) NOT NULL COMMENT '接口描述',
-  `creat_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `update_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后一次更新时间',
+  `last_update_user` varchar(255) NOT NULL COMMENT '最近更新的用户',
+  `creat_at` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=87 DEFAULT CHARSET=utf8;
