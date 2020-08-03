@@ -454,4 +454,9 @@
         and interface_name = #{interfaceName}</if>
     </where> limit ${(pageNum-1)*pageSize},${pageSize};
   </select>
+
+  <select id="queryInterFace" resultType="java.lang.String">
+    select distinct interface_name from interface ;
+  </select>
+
 </mapper>

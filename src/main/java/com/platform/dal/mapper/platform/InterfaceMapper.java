@@ -103,4 +103,10 @@ public interface InterfaceMapper {
      * 查询接口列表
      */
     List<Interface> queryPage(int pageNum,int pageSize,String interfaceName);
+
+
+    /***
+     * 查询不重名的接口名
+     */
+    List<String> queryInterFace();
 }

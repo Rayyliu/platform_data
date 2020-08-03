@@ -69,4 +69,11 @@ public class InterFaceController {
         interfaceDTO = JSON.parseObject(JSON.toJSONString(interfaceData),Interface.class);
         return interfaceMapper.updateByPrimaryKeySelective(interfaceDTO);
     }
+
+    @GetMapping("queryInterFace")
+    @ApiOperation("查询所有接口")
+    public String[] queryInterFace(){
+        List<String> ls =interfaceMapper.queryInterFace();
+        return ls.toArray(new String[ls.size()]);
+    }
 }
