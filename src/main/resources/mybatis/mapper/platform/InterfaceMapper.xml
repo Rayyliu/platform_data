@@ -459,4 +459,8 @@
     select distinct interface_name from interface ;
   </select>
 
+    <select id="selectByName" resultType="com.platform.dal.model.platform.Interface">
+        select * from interface where interface_name=#{interfaceName}
+    </select>
+
 </mapper>

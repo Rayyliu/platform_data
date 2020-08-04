@@ -76,4 +76,10 @@ public class InterFaceController {
         List<String> ls =interfaceMapper.queryInterFace();
         return ls.toArray(new String[ls.size()]);
     }
+
+    @GetMapping("queryByName")
+    @ApiOperation("根据接口名查询接口信息")
+    public Interface queryByName(String interfaceName){
+       return interfaceMapper.selectByName(interfaceName);
+    }
 }

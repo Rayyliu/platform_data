@@ -109,4 +109,10 @@ public interface InterfaceMapper {
      * 查询不重名的接口名
      */
     List<String> queryInterFace();
+
+
+    /***
+     * 根据接口名查询接口信息
+     */
+    Interface selectByName(String interfaceName);
 }
