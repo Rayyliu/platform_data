@@ -40,3 +40,18 @@ CREATE TABLE `interface` (
   `update_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `execute` (
+  `id` int(20) NOT NULL AUTO_INCREMENT COMMENT '用例id',
+  `case_name` varchar(255) NOT NULL COMMENT '用例名称',
+	`interface_id` int(20) NOT NULL COMMENT '用例对应接口id',
+  `project` varchar(255) NOT NULL COMMENT '接口所属项目',
+	`response` json NOT NULL COMMENT '实际返回结果',
+  `execute_result` varchar(255) DEFAULT NULL COMMENT '用例执行结果',
+  `assertion` json NOT NULL COMMENT '断言内容',
+  `assertion_result` varchar(255) DEFAULT NULL COMMENT '断言结果',
+  `last_execute_user` varchar(255) NOT NULL COMMENT '最近执行的用户',
+  `creat_at` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=utf8;
