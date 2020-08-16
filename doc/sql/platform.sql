@@ -44,6 +44,7 @@ CREATE TABLE `interface` (
 CREATE TABLE `execute` (
   `id` int(20) NOT NULL AUTO_INCREMENT COMMENT '用例id',
   `case_name` varchar(255) NOT NULL COMMENT '用例名称',
+  `valid` tinyint(1) NOT NULL COMMENT '用例是否可以执行：0：否定；1：肯定',
   `interface_id` int(20) NOT NULL COMMENT '用例对应接口id',
   `project` varchar(255) NOT NULL COMMENT '接口所属项目',
   `body` json NOT NULL COMMENT '用例参数集合',
