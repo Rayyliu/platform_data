@@ -44,6 +44,7 @@ CREATE TABLE `interface` (
 CREATE TABLE `execute` (
   `id` int(20) NOT NULL AUTO_INCREMENT COMMENT '用例id',
   `case_name` varchar(255) NOT NULL COMMENT '用例名称',
+  `description` varchar(255) DEFAULT NULL COMMENT '描述用例执行场景',
   `valid` tinyint(1) NOT NULL COMMENT '用例是否可以执行：0：否定；1：肯定',
   `interface_id` int(20) NOT NULL COMMENT '用例对应接口id',
   `project` varchar(255) NOT NULL COMMENT '接口所属项目',
@@ -52,8 +53,9 @@ CREATE TABLE `execute` (
   `case_execute_result` varchar(255) DEFAULT NULL COMMENT '用例执行结果',
   `assertion_content` json NOT NULL COMMENT '断言内容',
   `assert_result` varchar(255) DEFAULT NULL COMMENT '断言结果',
+  `last_execute_time` datetime DEFAULT NULL COMMENT '最近一次用例执行时间',
   `last_execute_user` varchar(255) NOT NULL COMMENT '最近执行的用户',
   `create_at` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;

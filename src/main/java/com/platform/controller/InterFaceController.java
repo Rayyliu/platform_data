@@ -82,4 +82,10 @@ public class InterFaceController {
     public Interface queryByName(String interfaceName){
        return interfaceMapper.selectByName(interfaceName);
     }
+
+    @GetMapping("queryByInterfaceId")
+    @ApiOperation("通过id查询接口信息")
+    public Interface queryByInterfaceId(int interfaceId){
+        return interfaceMapper.selectByPrimaryKey(interfaceId);
+    }
 }
