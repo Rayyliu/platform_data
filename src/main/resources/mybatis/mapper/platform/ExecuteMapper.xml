@@ -442,8 +442,17 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
+  <!--<select id="queryPage" resultType="com.platform.dal.model.platform.Execute">-->
+    <!--select * from execute-->
+    <!--<where>-->
+      <!--<if test="caseName!=null and caseName!=''">-->
+        <!--and case_name = #{caseName}</if>-->
+    <!--</where> limit ${(pageNum-1)*pageSize},${pageSize};-->
+  <!--</select>-->
+
   <select id="queryPage" resultType="com.platform.dal.model.platform.Execute">
-    select * from execute
+    select e.*,i.interface_name from execute e
+    INNER JOIN interface i on  e.interface_id=i.id
     <where>
       <if test="caseName!=null and caseName!=''">
         and case_name = #{caseName}</if>
