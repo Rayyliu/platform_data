@@ -467,4 +467,8 @@
     select * from execute where case_name=#{caseName,jdbcType=VARCHAR};
   </select>
 
+  <select id="queryAllCase" resultType="com.platform.dal.model.platform.Execute">
+    select * from execute ;
+  </select>
+
 </mapper>

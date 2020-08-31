@@ -109,4 +109,9 @@ public interface ExecuteMapper {
      * @param caseName
      */
     Execute selectByCaseName(String caseName);
+
+    /***
+     * 查询所有用例
+     */
+    List<Execute> queryAllCase();
 }

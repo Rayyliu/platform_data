@@ -61,4 +61,10 @@ public class ExecuteController {
     public Execute queryById(int id){
         return executeMapper.selectByPrimaryKey(id);
     }
+
+    @GetMapping("queryCase")
+    @ApiOperation("查询所有用例")
+    public List<Execute> queryCase(){
+       return executeMapper.queryAllCase();
+    }
 }
