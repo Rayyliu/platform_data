@@ -451,11 +451,11 @@
   <!--</select>-->
 
   <select id="queryPage" resultType="com.platform.dal.model.platform.Execute">
-    select e.*,i.interface_name,i.header,i.sign_entity,i.headerDetail from execute e
+    select e.*,i.interface_name,i.header,i.sign_entity,i.headerDetail,i.id,i.path from execute e
     INNER JOIN interface i on  e.interface_id=i.id
     <where>
       <if test="caseName!=null and caseName!=''">
-        and case_name = #{caseName}</if>
+        and case_name like '%${caseName}%'</if>
     </where> limit ${(pageNum-1)*pageSize},${pageSize};
   </select>
 

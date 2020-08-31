@@ -466,7 +466,7 @@
     select * from interface
     <where>
       <if test="interfaceName!=null and interfaceName!=''">
-        and interface_name = #{interfaceName}</if>
+        and interface_name like '%${interfaceName}%' </if>
     </where> limit ${(pageNum-1)*pageSize},${pageSize};
   </select>
 
@@ -477,5 +477,4 @@
     <select id="selectByName" resultType="com.platform.dal.model.platform.Interface">
         select * from interface where interface_name=#{interfaceName}
     </select>
-
 </mapper>
