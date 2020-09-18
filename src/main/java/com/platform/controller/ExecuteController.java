@@ -3,6 +3,8 @@ package com.platform.controller;
 import com.alibaba.fastjson.JSON;
 import com.platform.dal.mapper.platform.ExecuteMapper;
 import com.platform.dal.model.platform.Execute;
+import com.platform.entity.ResponseResult;
+import com.platform.entity.ResultCode;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -64,7 +66,7 @@ public class ExecuteController {
 
     @GetMapping("queryCase")
     @ApiOperation("查询所有用例")
-    public List<Execute> queryCase(){
-       return executeMapper.queryAllCase();
+    public ResponseResult queryCase(){
+       return new ResponseResult().success(ResultCode.SUCCESS.getCode(), true, "用例查询成功", executeMapper.queryAllCase());
     }
 }

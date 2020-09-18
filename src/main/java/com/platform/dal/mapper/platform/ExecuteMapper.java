@@ -113,5 +113,5 @@ public interface ExecuteMapper {
     /***
      * 查询所有用例
      */
-    List<Execute> queryAllCase();
+    List<String> queryAllCase();
 }
