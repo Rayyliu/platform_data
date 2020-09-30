@@ -31,9 +31,9 @@ public class ExecuteController {
     }
 
 
-    @GetMapping("queryPage")
+    @GetMapping(value = "queryPage")
     @ApiOperation("查询所有用例记录")
-    public List<Execute> queryPage(int pageNum, int pageSize, String caseName){
+    public  List<Execute> queryPage(int pageNum, int pageSize, String caseName){
         return executeMapper.queryPage(pageNum,pageSize,caseName);
 
     }

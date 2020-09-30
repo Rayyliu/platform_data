@@ -785,6 +785,78 @@ public class InterfaceExample {
             return (Criteria) this;
         }
 
+
+        public Criteria andSignAttributeIsNull() {
+            addCriterion("sign_attribute is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSignAttributeIsNotNull() {
+            addCriterion("sign_attribute is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSignAttributeEqualTo(String value) {
+            addCriterion("sign_attribute =", value, "signAttribute");
+            return (Criteria) this;
+        }
+
+        public Criteria andSignAttributeNotEqualTo(String value) {
+            addCriterion("sign_attribute <>", value, "signAttribute");
+            return (Criteria) this;
+        }
+
+        public Criteria andSignAttributeGreaterThan(String value) {
+            addCriterion("sign_attribute >", value, "signAttribute");
+            return (Criteria) this;
+        }
+
+        public Criteria andSignAttributeGreaterThanOrEqualTo(String value) {
+            addCriterion("sign_attribute >=", value, "signAttribute");
+            return (Criteria) this;
+        }
+
+        public Criteria andSignAttributeLessThan(String value) {
+            addCriterion("sign_attribute <", value, "signAttribute");
+            return (Criteria) this;
+        }
+
+        public Criteria andSignAttributeLessThanOrEqualTo(String value) {
+            addCriterion("sign_attribute <=", value, "signAttribute");
+            return (Criteria) this;
+        }
+
+        public Criteria andSignAttributeLike(String value) {
+            addCriterion("sign_attribute like", value, "signAttribute");
+            return (Criteria) this;
+        }
+
+        public Criteria andSignAttributeNotLike(String value) {
+            addCriterion("sign_attribute not like", value, "signAttribute");
+            return (Criteria) this;
+        }
+
+        public Criteria andSignAttributeIn(List<String> values) {
+            addCriterion("sign_attribute in", values, "signAttribute");
+            return (Criteria) this;
+        }
+
+        public Criteria andSignAttributeNotIn(List<String> values) {
+            addCriterion("sign_attribute not in", values, "signAttribute");
+            return (Criteria) this;
+        }
+
+        public Criteria andSignAttributeBetween(String value1, String value2) {
+            addCriterion("sign_attribute between", value1, value2, "signAttribute");
+            return (Criteria) this;
+        }
+
+        public Criteria andSignAttributeNotBetween(String value1, String value2) {
+            addCriterion("sign_attribute not between", value1, value2, "signAttribute");
+            return (Criteria) this;
+        }
+
+
         public Criteria andSignEntityIsNull() {
             addCriterion("sign_entity is null");
             return (Criteria) this;
