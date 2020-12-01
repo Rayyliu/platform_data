@@ -111,4 +111,15 @@ public interface EnvMapper {
      */
     void deletes(int[] ids);
 
+    /***
+     * 查询环境详情
+     * @return
+     */
+    List<Env> queryEnv();
+
+    /***
+     * 根据环境名称查询环境IP
+     * @param envName
+     */
+    String queryPathByEnvName(String envName);
 }

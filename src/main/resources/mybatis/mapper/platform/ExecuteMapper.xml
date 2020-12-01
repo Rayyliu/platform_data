@@ -151,6 +151,13 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
+
+  <delete id="deletes" parameterType="java.lang.String">
+    delete from execute where id in <foreach collection="array" item="item" index="index" open="(" close=")" separator=",">
+    #{item}
+  </foreach>
+  </delete>
+
   <insert id="insert" parameterType="com.platform.dal.model.platform.Execute">
     <!--
       WARNING - @mbg.generated
@@ -467,8 +474,12 @@
     select * from execute where case_name=#{caseName,jdbcType=VARCHAR};
   </select>
 
-  <select id="queryAllCase" resultType="string">
+  <select id="queryAllCase" resultType="java.lang.String">
     select case_name from execute ;
+  </select>
+
+  <select id="selectByProject" resultType="com.platform.dal.model.platform.Execute">
+    select * from execute where project=#{projectName,jdbcType=VARCHAR}
   </select>
 
 </mapper>

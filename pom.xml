@@ -37,19 +37,21 @@
         </dependency>
 
         <!--数据库连接jar包驱动-->
+        <!--5.1.40及以上版本才不会出现：返回json数据 中文乱码问题-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.30</version>
+            <!--<version>5.1.30</version>-->
+            <version>5.1.40</version>
         </dependency>
 
 
         <!--tk.mybatis jar包-->
-        <dependency>
-            <groupId>tk.mybatis</groupId>
-            <artifactId>mapper-spring-boot-starter</artifactId>
-            <version>2.0.4</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>tk.mybatis</groupId>-->
+            <!--<artifactId>mapper-spring-boot-starter</artifactId>-->
+            <!--<version>2.0.4</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>

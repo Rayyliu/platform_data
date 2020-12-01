@@ -78,7 +78,7 @@ public class MybatisGenerator {
 
             Configuration configuration = new Configuration();
             configuration.addContext(context);
-            configuration.addClasspathEntry(MybatisGenerator.class.getClassLoader().getResource("mysql-connector-java-5.1.30.jar").getFile());
+            configuration.addClasspathEntry(MybatisGenerator.class.getClassLoader().getResource("mysql-connector-java-5.1.40.jar").getFile());
 
             boolean overwrite = true;
             DefaultShellCallback shellCallback = new DefaultShellCallback(overwrite);

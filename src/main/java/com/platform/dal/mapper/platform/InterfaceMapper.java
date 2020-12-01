@@ -1,9 +1,9 @@
 package com.platform.dal.mapper.platform;
 
-        import com.platform.dal.model.platform.Interface;
-        import com.platform.dal.model.platform.InterfaceExample;
-        import java.util.List;
-        import org.apache.ibatis.annotations.Param;
+import com.platform.dal.model.platform.Interface;
+import com.platform.dal.model.platform.InterfaceExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface InterfaceMapper {
     /**

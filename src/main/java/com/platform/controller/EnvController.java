@@ -3,17 +3,21 @@ package com.platform.controller;
 
 import com.platform.dal.mapper.platform.EnvMapper;
 import com.platform.dal.model.platform.Env;
+import com.platform.entity.ResponseResult;
+import com.platform.entity.ResultCode;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("env/")
+@Transactional(rollbackFor = Exception.class)
 public class EnvController {
 
     @Autowired
@@ -55,6 +59,24 @@ public class EnvController {
     @ApiOperation("修改环境配置env表")
     public int edit(@RequestBody Env env){
        return envMapper.updateByPrimaryKeySelective(env);
-
     }
+
+    @GetMapping("queryEnvDetail")
+    @ApiOperation("查询环境详情")
+    public List<Env> queryEnvDetail(){
+        return envMapper.queryEnv();
+    }
+
+    @GetMapping("getPathByEnvName")
+    @ApiOperation("查询环境详情")
+    public String getPathByEnvName(String envName){
+        return envMapper.queryPathByEnvName(envName);
+    }
+
+    @GetMapping("queryAllEnv")
+    @ApiOperation("查询环境详情")
+    public ResponseResult queryAllEnv(){
+        return new ResponseResult(ResultCode.SUCCESS.getCode(),true,"查询环境成功",envMapper.queryEnv().stream().map(item->item.getEnvName()));
+    }
+
 }

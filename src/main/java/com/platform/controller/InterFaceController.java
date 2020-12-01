@@ -1,13 +1,13 @@
 package com.platform.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.platform.dal.mapper.platform.InterfaceMapper;
 import com.platform.dal.model.platform.Interface;
 import io.swagger.annotations.ApiOperation;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -16,6 +16,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("interface/")
+@Transactional(rollbackFor = Exception.class)
 public class InterFaceController {
 
     @Autowired
