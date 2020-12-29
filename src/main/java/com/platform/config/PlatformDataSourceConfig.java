@@ -45,7 +45,7 @@ public class PlatformDataSourceConfig extends DruidBaseConfig {
     public SqlSessionFactory platformSqlSessionFactory(@Qualifier("platformDataSource") DataSource platformDataSource)
             throws Exception {
 
-        //自动使用驼峰命名属性映射字段,userId -> user_id
+        //�Զ�ʹ���շ���������ӳ���ֶ�,userId -> user_id
         org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
         configuration.setMapUnderscoreToCamelCase(true);
 
