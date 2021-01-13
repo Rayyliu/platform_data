@@ -1,8 +1,6 @@
 package com.platform.controller;
 
 import com.platform.dal.mapper.platform.PlanMapper;
-import com.platform.dal.model.platform.Execute;
-import com.platform.dal.model.platform.Interface;
 import com.platform.dal.model.platform.Plan;
 import com.platform.entity.ResponseResult;
 import com.platform.entity.ResultCode;
@@ -10,8 +8,6 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("plan/")
