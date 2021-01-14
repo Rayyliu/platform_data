@@ -31,7 +31,7 @@ public class DbConfigSource {
         //获取远程配置的是NacosConfigService.getConfig(), 调用getConfigInner()。源码位置：com.alibaba.nacos.client.config.NacosConfigService.getConfig(String dataId, String group, long timeoutMs)
         String content = null;
         try {
-            content = configService.getConfig("platform-data.yml", "DEFAULT_GROUP", 3000);
+            content = configService.getConfig("platform-data-test.yml", "DEFAULT_GROUP", 3000);
         } catch (NacosException e) {
             e.printStackTrace();
         }
