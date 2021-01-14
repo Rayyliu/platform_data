@@ -15,6 +15,7 @@ spring:
 #        server-addr: 192.168.88.132:8848
         server-addr:  172.31.1.27:8848
         namespace: 25c137a9-a801-4033-9b3d-eac6d793c341
+        auto-register:  true
 
 ##数据库连接信息配置
 #ds:
