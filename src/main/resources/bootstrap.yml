@@ -1,8 +1,8 @@
 spring:
   application:
-    name: platform-data-test  #指定服务名，注册到eureka后，能够显示这里标注的服务名,名字中间必须是横线，不能是下划线
-  profiles:
-    active: test
+    name: platform-data  #指定服务名，注册到eureka后，能够显示这里标注的服务名,名字中间必须是横线，不能是下划线
+#  profiles:
+#    active: test
   cloud:
     nacos:
       config:
