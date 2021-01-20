@@ -6,6 +6,8 @@ import java.util.List;
 
 import io.swagger.annotations.ApiParam;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Select;
 
 public interface EnvMapper {
     /**

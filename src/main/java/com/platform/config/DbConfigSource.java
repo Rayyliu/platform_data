@@ -31,7 +31,7 @@ public class DbConfigSource {
         //获取远程配置的是NacosConfigService.getConfig(), 调用getConfigInner()。源码位置：com.alibaba.nacos.client.config.NacosConfigService.getConfig(String dataId, String group, long timeoutMs)
         String content = null;
         try {
-            content = configService.getConfig("platform-data-test.yml", "DEFAULT_GROUP", 3000);
+            content = configService.getConfig("platform-data.yml", "DEFAULT_GROUP", 3000);
         } catch (NacosException e) {
             e.printStackTrace();
         }
@@ -47,6 +47,7 @@ public class DbConfigSource {
         String password = prop.getProperty("ds." + projectName + ".password");
         String username = prop.getProperty("ds." + projectName + ".username");
         String tables = prop.getProperty("ds." + projectName + ".tables");
+        System.out.println("driverClassName==="+driverClassName);
 
         //信息放入到map集合
         Map<String,String> sourceMap = new HashMap<>();
