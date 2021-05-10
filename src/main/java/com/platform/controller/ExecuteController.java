@@ -36,11 +36,10 @@ public class ExecuteController {
 
     @GetMapping(value = "queryPage")
     @ApiOperation("查询所有用例记录")
-    public  List<Execute> queryPage(int pageNum, int pageSize, String caseName){
-        List<Execute> Executes =executeMapper.queryPage(pageNum,pageSize,caseName);
+    public  ResponseResult queryPage(int pageNum, int pageSize, String caseName){
 //        Executes.stream().forEach(item-> System.out.println("Response==="+JSONObject.parseObject(item.getResponse()).getString("message")));
-        return Executes;
 
+        return  new ResponseResult().success(ResultCode.SUCCESS.getCode(),true,"查询测试环境列表成功",executeMapper.queryPage(pageNum,pageSize,caseName));
     }
 
     @GetMapping("queryAll")
@@ -51,7 +50,7 @@ public class ExecuteController {
 
     @PostMapping("update")
     @ApiOperation("更新execute表，包括编辑和每次执行用例所更新的数据")
-    public int updateExecuteRecord(@RequestBody Map<String,Object> record){
+    public int updateExecuteRecord(@RequestBody Map<String,Object> record,String jsessionid){
         Execute execute;
         execute=JSON.parseObject(JSON.toJSONString(record),Execute.class);
         return executeMapper.updateByPrimaryKeySelective(execute);

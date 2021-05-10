@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.platform.dal.mapper.platform.InterfaceMapper;
 import com.platform.dal.model.platform.Interface;
+import com.platform.entity.ResponseResult;
+import com.platform.entity.ResultCode;
 import io.swagger.annotations.ApiOperation;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,10 +58,11 @@ public class InterFaceController {
     }
 
     @GetMapping("queryPage")
-    public List<Interface> queryPage(@RequestParam("pageNum") int pageNum,
+    public ResponseResult queryPage(@RequestParam("pageNum") int pageNum,
                                @RequestParam("pageSize")int pageSize,
                                @RequestParam(value = "interfaceName",required = false)String interfaceName){
-        return interfaceMapper.queryPage(pageNum,pageSize,interfaceName);
+//        return interfaceMapper.queryPage(pageNum,pageSize,interfaceName);
+        return new ResponseResult().success(ResultCode.SUCCESS.getCode(),true,"查询测试环境列表成功",interfaceMapper.queryPage(pageNum,pageSize,interfaceName));
     }
 
     @PostMapping("edit")
@@ -80,7 +83,7 @@ public class InterFaceController {
 
     @GetMapping("queryByName")
     @ApiOperation("根据接口名查询接口信息")
-    public Interface queryByName(String interfaceName){
+    public Interface queryByName(String interfaceName,String jsessionid){
        return interfaceMapper.selectByName(interfaceName);
     }
 

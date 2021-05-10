@@ -1,9 +1,13 @@
 package com.platform.dal.mapper.platform;
 
+import com.platform.dal.model.platform.SysRole;
 import com.platform.dal.model.platform.SysUserRole;
 import com.platform.dal.model.platform.SysUserRoleExample;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
+
+import com.platform.entity.po.SysUserRolePO;
+import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.mapping.FetchType;
 
 public interface SysUserRoleMapper {
     /**
@@ -61,4 +65,21 @@ public interface SysUserRoleMapper {
      * @mbg.generated Wed Jan 20 11:13:55 CST 2021
      */
     int updateByExample(@Param("record") SysUserRole record, @Param("example") SysUserRoleExample example);
+
+
+    /***
+     * 根据角色名称查询对应的多个用户
+     * @param uid
+     * @return
+     */
+    @Select("select role_id,uid from sys_user_role where uid = #{uid}")
+    @Results(
+            {
+                @Result(id=true,column="role_id",property="roleId"),
+                @Result(column="role_id",property="SysRoles",many = @Many(select = "com.platform.dal.mapper.platform.SysRoleMapper.getSysRoles",fetchType = FetchType.LAZY)),
+    //          @Result(column="uid}",property="SysRoles",many = @Many(select = "com.platform.dal.mapper.platform.SysRoleMapper.getSysRoles",fetchType = FetchType.LAZY)),
+                @Result(column="uid",property="uid")
+            }
+    )
+    List<SysUserRolePO> getUserRole(Integer uid);
 }

@@ -3,7 +3,10 @@ package com.platform.dal.mapper.platform;
 import com.platform.dal.model.platform.SysRole;
 import com.platform.dal.model.platform.SysRoleExample;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
+
+import com.platform.entity.UserEntity;
+import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.mapping.FetchType;
 
 public interface SysRoleMapper {
     /**
@@ -93,4 +96,16 @@ public interface SysRoleMapper {
      * @mbg.generated Wed Jan 20 11:13:55 CST 2021
      */
     int updateByPrimaryKey(SysRole record);
+
+
+    @Select("select id,description,name from sys_role where id = #{id}")
+    @Results({
+            @Result(id=true,column="id",property="id"),
+            @Result(column = "id",property="rolePermission",many = @Many(select = "com.platform.dal.mapper.platform.SysRolePermissionMapper.getRolePermission",fetchType = FetchType.LAZY)),
+//            @Result(column = "#{uid}",property = "userEntity",many = @Many(select = "com.platform.dal.mapper.platform.UserMapper.selectByPrimaryKey",fetchType = FetchType.LAZY)),
+            @Result(column = "description",property="description"),
+            @Result(column = "name",property="name")
+    }
+    )
+    List<com.platform.entity.po.SysRole> getSysRoles(int roleId);
 }

@@ -31,12 +31,12 @@ public class PlatformTestBase {
 	 * 插入user表数据
 	 */
 	public void insertUser(
-		Integer id, 
-		String mobile, 
-		String password, 
-		String email, 
-		String status, 
-		String role, 
+		Integer id,
+		String mobile,
+		String password,
+		String email,
+		String status,
+		String role,
 		Date creatAt
 	) {
 		if (creatAt == null) {

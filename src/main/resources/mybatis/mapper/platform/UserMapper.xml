@@ -349,5 +349,8 @@
     <select id="selectUserByEmail" resultType="com.platform.entity.UserEntity">
         select * from user where email = #{email,jdbcType=VARCHAR}
     </select>
+  <select id="selectUserByUserName" resultType="com.platform.dal.model.platform.User">
+    select id,mobile,password,email,status,username,salt from user where username = #{username}
+  </select>
 
 </mapper>

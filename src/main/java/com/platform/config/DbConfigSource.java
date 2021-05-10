@@ -47,7 +47,6 @@ public class DbConfigSource {
         String password = prop.getProperty("ds." + projectName + ".password");
         String username = prop.getProperty("ds." + projectName + ".username");
         String tables = prop.getProperty("ds." + projectName + ".tables");
-        System.out.println("driverClassName==="+driverClassName);
 
         //信息放入到map集合
         Map<String,String> sourceMap = new HashMap<>();

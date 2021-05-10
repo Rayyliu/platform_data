@@ -2,7 +2,10 @@ package com.platform.controller;
 
 import com.platform.dal.mapper.platform.ProjectMapper;
 import com.platform.dal.model.platform.Project;
+import com.platform.entity.ResponseResult;
+import com.platform.entity.ResultCode;
 import com.platform.entity.dto.ProjectDTO;
+import com.platform.entity.entity.PageEntity;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.ibatis.annotations.Param;
@@ -40,9 +43,16 @@ public class ProjectController {
 
     @GetMapping("query")
     @ApiOperation("项目列表查询")
-    public List<Project> query(int page, int pageSize){
-        return projectMapper.query(page,pageSize);
+//    public List<Project> query(int page, int pageSize){
+//        return projectMapper.query(page,pageSize);
+//    }
+
+    public ResponseResult query(int page, int pageSize){
+        PageEntity pageEntity = new PageEntity(page,pageSize,projectMapper.query(page,pageSize),projectMapper.queryProjectTotal());
+        return new ResponseResult().success(ResultCode.SUCCESS.getCode(),true,"查询列表成功",pageEntity);
     }
+
+
 
     @GetMapping("queryTotal")
     @ApiOperation("查询项目总数")

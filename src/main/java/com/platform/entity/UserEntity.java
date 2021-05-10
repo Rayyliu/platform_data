@@ -1,7 +1,19 @@
 package com.platform.entity;
 
 
-public class UserEntity  {
+import com.platform.entity.po.SysRole;
+
+import java.io.Serializable;
+import java.util.List;
+
+public class UserEntity implements Serializable {
+
+    private static final long serialVersionUID = 5528101080905698238L;
+
+    /**
+     * 用户id
+     */
+    private String userId;
 
     /**
      * 注册手机号
@@ -19,10 +31,34 @@ public class UserEntity  {
      * 账号状态
      */
     private String status;
+
+    /***
+     * 用户名
+     */
+    private String username;
+
+
     /**
      * 注册角色
      */
-    private String role;
+    private List<SysRole> role;
+
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public String getMobile() {
         return mobile;
@@ -56,11 +92,11 @@ public class UserEntity  {
         this.status = status;
     }
 
-    public String getRole() {
+    public List<SysRole> getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(List<SysRole> role) {
         this.role = role;
     }
 

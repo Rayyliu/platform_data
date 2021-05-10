@@ -5,7 +5,13 @@ import com.platform.dal.model.platform.UserExample;
 import java.util.List;
 
 import com.platform.entity.UserEntity;
+import com.platform.entity.po.SysRole;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Select;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 public interface UserMapper {
     /**
@@ -97,5 +103,18 @@ public interface UserMapper {
     int updateByPrimaryKey(User record);
 
     UserEntity selectUserByEmail(String email);
+
+//    @Select("select id,mobile,password,email,status,username,salt from user where username = #{username}")
+//    @Results({
+//            @Result(id=true,column="id",property="id"),
+//            @Result(column="mobile",property="mobile"),
+//            @Result(column="password",property="password"),
+//            @Result(column="email",property="email"),
+//            @Result(column="status",property="status"),
+////            @Result(column="role",property="role"),
+//            @Result(column="username",property="username"),
+//            @Result(column="salt",property="salt")
+//    })
+    User selectUserByUserName(String username);
 
 }

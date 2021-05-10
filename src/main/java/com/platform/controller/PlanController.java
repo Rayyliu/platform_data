@@ -27,7 +27,9 @@ public class PlanController {
     @ApiOperation("分页查询")
     public ResponseResult queryPage(@RequestParam("pageNum") int pageNum,
                                      @RequestParam("pageSize")int pageSize,
-                                     @RequestParam(value = "planName",required = false)String planName){
+                                     @RequestParam(value = "planName",required = false)String planName
+//                                    @RequestParam("jsessionid") String jsessionid
+    ){
         return new ResponseResult(ResultCode.SUCCESS.getCode(),true,"分页查询成功",planMapper.queryPage(pageNum,pageSize,planName));
     }
 }

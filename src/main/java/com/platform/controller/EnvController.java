@@ -5,6 +5,7 @@ import com.platform.dal.mapper.platform.EnvMapper;
 import com.platform.dal.model.platform.Env;
 import com.platform.entity.ResponseResult;
 import com.platform.entity.ResultCode;
+import com.platform.entity.entity.PageEntity;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -29,13 +30,18 @@ public class EnvController {
         return envMapper.insertSelective(env);
     }
 
+
+//    @CrossOrigin
     @GetMapping("queryPage")
 //    @ApiImplicitParams({
 //    @ApiImplicitParam(name="envName",value="测试环境",paramType = "query")})
-    public List<Env> queryPage(@RequestParam("pageNum") int pageNum,
+    public ResponseResult queryPage(@RequestParam("pageNum") int pageNum,
                                @RequestParam("pageSize")int pageSize,
                                @RequestParam(value = "envName",required = false)String envName){
-        return envMapper.queryPage(pageNum,pageSize,envName);
+
+//        PageEntity pageEntity = new PageEntity(page,pageSize,projectMapper.query(page,pageSize),projectMapper.queryProjectTotal());
+
+        return new ResponseResult().success(ResultCode.SUCCESS.getCode(),true,"查询测试环境列表成功",envMapper.queryPage(pageNum,pageSize,envName));
     }
 
     @GetMapping(value = "queryTotal")

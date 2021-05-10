@@ -4,6 +4,9 @@ import com.platform.dal.model.platform.SysPermission;
 import com.platform.dal.model.platform.SysPermissionExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Select;
 
 public interface SysPermissionMapper {
     /**
@@ -93,4 +96,15 @@ public interface SysPermissionMapper {
      * @mbg.generated Wed Jan 20 11:13:55 CST 2021
      */
     int updateByPrimaryKey(SysPermission record);
+
+
+    @Select("select id,description,name,url from sys_permission where id = #{id}")
+    @Results({
+            @Result(id=true,column="id",property="id"),
+            @Result(column="id",property="id"),
+            @Result(column="description",property="description"),
+            @Result(column="name",property="name"),
+            @Result(column="url",property="url"),
+    })
+    List<com.platform.entity.po.SysPermission> getPermission(int id);
 }
